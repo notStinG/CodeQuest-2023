@@ -1,0 +1,6 @@
+for l in range(int(input())):
+    line = input()
+    wordlist = line.split(" ")
+    for i in range(len(wordlist)):
+        if wordlist[i] == "Nimo":
+            print(i + 1)
