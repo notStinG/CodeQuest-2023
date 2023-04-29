@@ -1,0 +1,15 @@
+def decypher(a):
+    skip = False
+    result = ""
+    for i in range(len(a)):
+        if skip == False:
+            if a[i] in vowels:
+                skip = True
+                result += a[i + 1]
+        else:
+            skip = False
+    return result 
+
+vowels = "aeiou"
+msg = input()
+print(decypher(msg))
