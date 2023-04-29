@@ -1,0 +1,33 @@
+def main():
+    namelist = []
+    totallist = []
+    info = input()
+    infolist = info.split(" ")
+    catsno = int(infolist[0])
+    transno = int(infolist[1])
+    for a in range(catsno):
+        catinfo = input()
+        catinfolist = catinfo.split(" ")
+        namelist.append(catinfolist[0])
+        totallist.append(int(catinfolist[1]))
+    for i in range(transno):
+        trans = input()
+        transinfo = trans.split(" ")
+        print(calc(transinfo, namelist, totallist))
+
+def calc(transinfo, namelist, totallist):
+    for s in range(len(namelist)):
+        if transinfo[0] == namelist[s]:
+            if transinfo[1] == "+":
+                totallist[s] += int(transinfo[2])
+                return "Yes"
+            if transinfo[1] == "-":
+                if totallist[s] < int(transinfo[2]):
+                    return "No"
+                else:
+                    totallist[s] -= int(transinfo[2])
+                    return "Yes"
+        
+
+for l in range(int(input())):
+    main()
