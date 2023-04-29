@@ -1,0 +1,19 @@
+for t in range(int(input())):
+    null_values = list(map(float, input().strip().split()))
+    third_values = list(map(float, input().strip().split()))
+    
+    multipaction_indices = []
+    for i in range(len(null_values)):
+        null_value = null_values[i]
+        third_value = third_values[i]
+        if 0.6 <= third_value/null_value <= 0.85:
+            multipaction_indices.append(i)
+    
+    if len(multipaction_indices) == 0:
+        print("No multipaction events detected.")
+    elif len(multipaction_indices) == 1:
+        print("A multipaction event was detected at time index {}.".format(multipaction_indices[0]))
+    else:
+        indices_str = " ".join(str(i) for i in multipaction_indices)
+        print("{} multipaction events were detected at time indices: {}.".format(len(multipaction_indices), indices_str))
+        
