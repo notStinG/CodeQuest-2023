@@ -1,0 +1,65 @@
+def main():
+    games = input()
+    for l in range(int(games)):
+        pscore = play()
+        dscore = play()
+        print(result(pscore, dscore))
+
+def play():
+    hand = []
+    values = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    cards = input()
+    cards = cards.split(" ")
+    for u in range(len(cards)):
+        card = cards[u].split("_OF_")
+        hand.append(card[0])
+    for i in range(len(hand)):
+        if hand[i] == "ACE":
+            aceflag = True
+            total += 11
+            continue
+        else:
+            total += int(hand[i])
+    if total > 21 and aceflag == True:
+        total -= 10
+    return total
+
+def result(pscore, dscore):
+    if pscore == 21:
+        player = True
+        if dscore == 21:
+            dealer = True
+        else:
+            dealer = False
+    elif dscore > 21:
+        dealer = False
+        if player > 21:
+            player = False
+        else:
+            player = True
+    elif pscore > 21:
+        player = False
+        dealer = True
+    elif pscore < 21 and dscore < 21:
+        if pscore > dscore:
+            player = True
+            dealer = False
+        else:
+            player = False
+            dealer = True
+    elif pscore == dscore:
+        player = True
+        dealer = True
+    return printstatement(player, dealer, pscore, dscore)
+
+def printstatement(player, dealer, pscore, dscore):    
+    if player == True and dealer == True:
+        end = "Tie!"
+    if player == False and dealer == True:
+        end = "Dealer Wins!"
+    if player == True and dealer == False:
+        end = "Player Wins!"
+    return "Player Score: {} Dealer Score: {} {}".format(pscore, dscore, end)
+            
+    
+main()
