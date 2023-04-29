@@ -1,0 +1,11 @@
+for l in range(int(input())):
+    info = input()
+    infolist = info.split(" ")
+    cascr = int(infolist[0])
+    leadb = int(infolist[1])
+    if cascr > leadb:
+        print("Cassowary Craft sold {} more aircraft".format(cascr - leadb))
+    if cascr < leadb:
+        print("Lead Balloons Ltd sold {} more aircraft".format(leadb - cascr))
+    if cascr == leadb:
+        print("Cassowary Craft and Lead Balloons Ltd sold the same number of aircraft")
