@@ -1,0 +1,41 @@
+def calc(word, valuelist):
+    total = 0
+    for i in range(len(word)):
+        alphabet = ord(word[i]) - 65
+        total += valuelist[alphabet]
+    if total == 100:
+        return [valuelist[0], word]
+    else:
+        return ""
+
+winnerlist = []
+wordlist = []
+alist = []
+
+
+for l in range(int(input())):
+    valuelist = []
+    info = input()
+    infolist = info.split(" ")
+    a = int(infolist[0])
+    words = int(infolist[1])
+
+    
+    for p in range(26):
+        if a == 26:
+            valuelist.append(a)
+            a = 1
+        else:
+            valuelist.append(a)
+            a += 1
+
+            
+    for o in range(words):
+        word = input()
+        wordlist.append(word)
+        if calc(word, valuelist)!= "":
+            winnerlist.append(calc(word, valuelist))
+
+for x in range(len(winnerlist)):
+    buffer = winnerlist[x]
+    print("WINNER {}: {}".format(buffer[0], buffer[1]))
